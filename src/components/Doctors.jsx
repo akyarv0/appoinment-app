@@ -3,6 +3,7 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import { doctorData } from "../helpers/data";
 import { Row } from "react-bootstrap";
+import AddModal from "./AddModal";
 
 const Doctors = () => {
   console.log(doctorData);
@@ -21,6 +22,7 @@ const Doctors = () => {
           </Col>
         ))}
       </Row>
+      <AddModal />
     </Container>
   );
 };
