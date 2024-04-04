@@ -7,8 +7,12 @@ import AddModal from "./AddModal";
 import { useState } from "react";
 
 const Doctors = () => {
-  const [showModal, setShow] = useState(false);
   console.log(doctorData);
+
+  const [showModal, setShow] = useState(false);
+  const [drName, setDrName] = useState("");
+  const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
   return (
     <Container>
@@ -22,14 +26,14 @@ const Doctors = () => {
             <Image
               src={img}
               alt={name}
-              onClick={() => setShow(true)}
               className="img-thumbnail doctor-img w-100"
+              onClick={()=>{setDrName(name) ;setShow(true)}}
             />
             <h5>{name}</h5> <h5>{dep}</h5>
           </Col>
         ))}
       </Row>
-      <AddModal showModal={showModal} handleClose={() => setShow(false)} />
+      <AddModal showModal={showModal} handleClose={handleClose} drName = {drName}/>
     </Container>
   );
 };
