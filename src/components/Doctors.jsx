@@ -4,8 +4,10 @@ import Image from "react-bootstrap/Image";
 import { doctorData } from "../helpers/data";
 import { Row } from "react-bootstrap";
 import AddModal from "./AddModal";
+import { useState } from "react";
 
 const Doctors = () => {
+  const [showModal, setShow] = useState(false);
   console.log(doctorData);
 
   return (
@@ -17,12 +19,17 @@ const Doctors = () => {
       <Row>
         {doctorData.map(({ id, img, name, dep }) => (
           <Col xs={12} sm={6} md={4} key={id}>
-            <Image src={img} alt={name} className="img-thumbnail doctor-img w-100" />
+            <Image
+              src={img}
+              alt={name}
+              onClick={() => setShow(true)}
+              className="img-thumbnail doctor-img w-100"
+            />
             <h5>{name}</h5> <h5>{dep}</h5>
           </Col>
         ))}
       </Row>
-      <AddModal />
+      <AddModal showModal={showModal} handleClose={() => setShow(false)} />
     </Container>
   );
 };
