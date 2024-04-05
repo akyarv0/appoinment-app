@@ -16,6 +16,8 @@ const Doctors = ({appointments, setAppointments}) => {
 
   const addAppointment = (newAppointment) => {
     setAppointments([...appointments, newAppointment]);
+
+    localStorage.setItem("appointments", JSON.stringify([...appointments, newAppointment]));
   } 
 
   return (

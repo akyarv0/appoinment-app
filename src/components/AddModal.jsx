@@ -25,6 +25,9 @@ function AddModal({ showModal, handleClose, drName, addAppointment }) {
       consulted: false,
       doctor: drName, });
 
+    setPatientName("");
+    setDate("");
+
     handleClose();
   };
 

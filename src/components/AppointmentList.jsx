@@ -5,6 +5,13 @@ import Col from "react-bootstrap/Col";
 import { TiDelete,TiTick} from "react-icons/ti";
 
 const AppointmentList = ({ appointments, setAppointments }) => {
+
+  const handleDelete = (id) => {
+    setAppointments(appointments.filter(item => item.id !== id));
+  };
+  const handleToggle = (id) => {
+    setAppointments(appointments.map(item => item.id === id ? {...item, consulted: !item.consulted} : item));
+  };
   return (
     <Container className="p-2">
     <h3 className="display-6 mb-2" style={{ color: "rgb(166, 18, 189)" }}>
@@ -29,8 +36,8 @@ const AppointmentList = ({ appointments, setAppointments }) => {
             <h5>Time : {new Date(day).toLocaleTimeString()}</h5>
           </Col>
           <Col className="text-end">
-            <TiTick type="button" />
-            <TiDelete type="button"  />
+            <TiTick type="button"className="text-success display-2" onClick={() => handleToggle(id)}/>
+            <TiDelete type="button"  className="text-danger display-2" onClick={() => handleDelete(id)} />
           </Col>
         </Row>
       ))
