@@ -12,7 +12,7 @@ const Doctors = () => {
   const [showModal, setShow] = useState(false);
   const [drName, setDrName] = useState("");
   const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  const handleShow = () => setShow(true);
 
   return (
     <Container>
@@ -27,13 +27,20 @@ const Doctors = () => {
               src={img}
               alt={name}
               className="img-thumbnail doctor-img w-100"
-              onClick={()=>{setDrName(name) ;setShow(true)}}
+              onClick={() => {
+                setDrName(name);
+                setShow(true);
+              }}
             />
             <h5>{name}</h5> <h5>{dep}</h5>
           </Col>
         ))}
       </Row>
-      <AddModal showModal={showModal} handleClose={handleClose} drName = {drName}/>
+      <AddModal
+        showModal={showModal}
+        handleClose={handleClose}
+        drName={drName}
+      />
     </Container>
   );
 };
