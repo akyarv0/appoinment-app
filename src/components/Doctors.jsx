@@ -6,13 +6,17 @@ import { Row } from "react-bootstrap";
 import AddModal from "./AddModal";
 import { useState } from "react";
 
-const Doctors = () => {
-  console.log(doctorData);
+const Doctors = ({appointments, setAppointments}) => {
+  // console.log(doctorData);
 
   const [showModal, setShow] = useState(false);
   const [drName, setDrName] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const addAppointment = (newAppointment) => {
+    setAppointments([...appointments, newAppointment]);
+  } 
 
   return (
     <Container>
@@ -40,6 +44,7 @@ const Doctors = () => {
         showModal={showModal}
         handleClose={handleClose}
         drName={drName}
+        addAppointment={addAppointment}
       />
     </Container>
   );
